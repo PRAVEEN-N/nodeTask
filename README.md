@@ -12,6 +12,26 @@ git clone https://github.com/PRAVEEN-N/nodeTask.git
 cd nodeTask
 npm install
 ```
+**Database Setup**
+
+In order to set up and connect to the database for this project, you will need to configure the following details:
+- **Host**: Represents the hostname where your database server is running.
+- **User**: This is the username that has the rights to access and perform operations on the specified database.
+- **Password**: Password associated with the username provided.
+- **Database**: It represents the specific database on which operations are supposed to be performed.
+
+The configuration is located at nodetask/src/config
+```
+module.exports = {
+    db: {
+        host: <hostname>,
+        user: <username>,
+        password: <password>,
+        database: <db_name>
+    },
+    //... Rest of the code
+};
+```
 Start the server:
 
 ```
@@ -19,7 +39,9 @@ npm start
 ```
 The server will start running on http://localhost:3000.
 
-**Usage**
+**USER and PRODUCT Management APIs**
+
+
 **Authentication**
 
 #### Register
