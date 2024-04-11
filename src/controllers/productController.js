@@ -13,14 +13,23 @@ exports.createProduct = async (req, res) => {
 };
 
 
-// Get all products
+// Get products
 exports.getProducts = async (req, res) => {
-  try {
-    const products = await ProductService.getProducts();
-    res.status(200).json(products);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+    try {
+        const { id } = req.params;
+
+        // If 'id' is provided, get single product
+        if (id) {
+            const product = await ProductService.getProductById(id);
+            res.status(200).json([product]);
+        } else {
+            // get all products
+            const products = await ProductService.getProducts();
+            res.status(200).json(products);
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 };
 
 // Update a specified product

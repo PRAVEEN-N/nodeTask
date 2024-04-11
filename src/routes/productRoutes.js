@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', verifyToken, authorizeAdmin, productController.createProduct);
 
 // Route to get all products. Accessible to both admins and managers
-router.get('/', verifyToken, authorizeAdminManager, productController.getProducts);
+router.get('/:id?', verifyToken, authorizeAdminManager, productController.getProducts);
 
 // Route to update existing product. Accessible to both admins and managers.
 router.put('/:id', verifyToken, authorizeAdminManager, productController.updateProduct);

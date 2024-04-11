@@ -14,6 +14,15 @@ class ProductService {
         return await Product.findAll();
     }
 
+    static async getProductById(id) {
+        // Check if product exists
+        const product = await Product.findOne({ where: { id } });
+        if (!product) {
+            throw new Error('Product not found');
+        }
+        return product;
+    };
+
     // Method to update a specific product
     static async updateProduct(id, title, description, inventory, userId, role) {
         // Check if product exists
@@ -41,7 +50,7 @@ class ProductService {
 
             // Find product by id
             const product = await Product.findOne({ where: { id } });
-            
+
             if (!product) throw new Error('Product not found');
             await product.destroy();
             return { message: 'Product deleted' };
